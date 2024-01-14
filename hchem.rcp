@@ -1,0 +1,58 @@
+#include "resids.h"
+
+// Forms and Alerts
+FORM ID MainForm AT (0 0 160 160)
+MENUID 1000
+BEGIN
+  BUTTON "" ID btn_Select AT (0 0 10 10) GRAPHICAL BITMAPID 200 SELECTEDBITMAPID 201
+  BUTTON "" ID btn_Draw AT (0 PREVBOTTOM+2 10 10) GRAPHICAL BITMAPID 210 SELECTEDBITMAPID 211
+  BUTTON "T" ID btn_Label AT (0 PREVBOTTOM+2 10 10) FONT 0
+  BUTTON "D" ID btn_Delete AT (0 PREVBOTTOM+2 10 10) FONT 0
+
+  LABEL "Atom:" AUTOID AT (0 BOTTOM@160) FONT 0
+  FIELD ID fld_Label AT (PREVRIGHT PREVTOP 20 AUTO) LEFTALIGN EDITABLE UNDERLINED MAXCHARS 3
+  LIST "Choice1" ID List_ID AT (1 13 154 AUTO) FONT 0 NONUSABLE VISIBLEITEMS 10
+END
+
+ALERT ID ID_About
+INFORMATION
+BEGIN
+  TITLE "About"
+  MESSAGE "HandyChem version 0.1 by Alexei Novikov (anovikov@chem.und.edu)"
+  BUTTONS "OK" 
+END
+
+
+// Bitmaps and Icons
+ICON "icon.bmp"
+
+BITMAPGREY ID 200 "bnselect.bmp"
+BITMAPGREY ID 201 "bnselectp.bmp"
+
+BITMAPGREY ID 210 "bndraw.bmp"
+BITMAPGREY ID 211 "bndrawp.bmp"
+
+MENU ID 1000
+BEGIN
+  PULLDOWN "File"
+  BEGIN
+//    MENUITEM "New" ID Menu_New "N"
+    MENUITEM "Open..." ID Menu_Open "O"
+    MENUITEM SEPARATOR
+    MENUITEM "Send..." ID Menu_Send "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Erase Sketch" ID Menu_Eraseall "D"
+//    MENUITEM "Export as .MOL" ID Menu_Export "E"
+  END
+//  PULLDOWN "Options"
+//  BEGIN
+//    MENUITEM "Get Info..." ID 200 "I"
+//  END
+  PULLDOWN "About"
+  BEGIN
+   MENUITEM "About" ID Menu_About
+  END
+END
+
+VERSION ID 1 "0.1"
+
